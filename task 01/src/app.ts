@@ -17,3 +17,18 @@ addButtonElement.addEventListener("click", () => {
 	);
 	console.log(sum);
 });
+
+//union type - związek kilku typów
+
+const logAge = (age2: number | string) => {
+	console.log(`Hej, mam ${age2} lat`);
+};
+
+logAge(10);
+logAge("dwadziescia osiem");
+
+let test: string | number | boolean;
+test = "test";
+test = 21;
+test = true;
+// test = [];
