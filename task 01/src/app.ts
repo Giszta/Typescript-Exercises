@@ -1,65 +1,31 @@
-// let age: number = 29; //w przypadku kiedy podajemy wartosc zmiiennej, nie musimy okreslac jej typu, ponieważ ts zrobi to sam (type inference)
-// let ageAsString: string = "dziesiec";
+// <li>
+// <label for="task-1">Wyrzucić śmieci</label>
+// <input type="checkbox" id="task-1" name="Wyrzucić śmieci" />
+// </li>
 
-// const add = (v1: number, v2: number) => v1 + v2;
-// console.log(add(10, 5));
+const taskNameInputElement: HTMLInputElement = document.querySelector("#name");
+const addButtonElement: HTMLElement = document.querySelector("button");
+const tasksContainerElement: HTMLElement = document.querySelector(".tasks");
 
-// const input1Element: HTMLInputElement = document.querySelector("#input1");
-// const input2Element: HTMLInputElement = document.querySelector("#input2");
-// const addButtonElement = document.querySelector("button");
+const tasks: string[] = ["Wyrzucić śmieci", "Pójść na siłkę", "nakarmić koty"];
 
-// const addInput = (v1: number, v2: number) => v1 + v2;
-
-// addButtonElement.addEventListener("click", () => {
-// 	const sum = addInput(
-// 		Number(input1Element.value),
-// 		Number(input2Element.value)
-// 	);
-// 	console.log(sum);
-// });
-
-// //union type - związek kilku typów
-
-// const logAge = (age2: number | string) => {
-// 	console.log(`Hej, mam ${age2} lat`);
-// };
-
-// logAge(10);
-// logAge("dwadziescia osiem");
-
-// let test: string | number | boolean;
-// test = "test";
-// test = 21;
-// test = true;
-// // test = [];
-
-// task 1 - discount
-
-const buttonElement = document.querySelector("button");
-
-const calculatePrice = (originalPrice: number, hasDiscount: boolean) => {
-	return hasDiscount ? originalPrice * 0.8 : originalPrice;
+const render = () => {
+	tasksContainerElement.innerHTML = "";
+	tasks.forEach((task) => {
+		const taskElement: HTMLElement = document.createElement("li");
+		taskElement.innerHTML = task;
+		tasksContainerElement.appendChild(taskElement);
+	});
 };
 
-buttonElement.addEventListener("click", () => {
-	const originalPrice: number = 50;
-	const hasDiscount: boolean =
-		new URLSearchParams(window.location.search).get("discount") === "true";
+const addTask = (task: string) => {
+	tasks.push(task);
+};
 
-	console.log(calculatePrice(originalPrice, hasDiscount));
+addButtonElement.addEventListener("click", (event: Event) => {
+	event.preventDefault();
+	addTask(taskNameInputElement.value);
+	render();
 });
 
-//union type - związek kilku typów
-
-const logAge = (age2: number | string) => {
-	console.log(`Hej, mam ${age2} lat`);
-};
-
-logAge(10);
-logAge("dwadziescia osiem");
-
-let test: string | number | boolean;
-test = "test";
-test = 21;
-test = true;
-// test = [];
+render();
