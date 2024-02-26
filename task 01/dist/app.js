@@ -39,4 +39,5 @@ addButtonElement.addEventListener("click", (event) => {
     addTask({ title: taskNameInputElement.value, done: false });
     render();
 });
+addTask({ title: "zrobic klate", category: "gym", done: false });
 render();
