@@ -5,11 +5,14 @@ const tasksContainerElement: HTMLElement = document.querySelector(".tasks");
 interface Task {
 	title: string;
 	done: boolean;
+	category?: string;
 }
+
+const categories: string[] = ["general", "work", "gym", "hobby"];
 
 const tasks: Task[] = [
 	{ title: "Wyrzucić śmieci", done: false },
-	{ title: "Pójść na siłkę", done: true },
+	{ title: "Pójść na siłkę", done: true, category: "gym" },
 	{ title: "nakarmić koty", done: false },
 ];
 
@@ -17,6 +20,9 @@ const render = () => {
 	tasksContainerElement.innerHTML = "";
 	tasks.forEach((task, index) => {
 		const taskElement: HTMLElement = document.createElement("li");
+		if (task.category) {
+			taskElement.classList.add(task.category);
+		}
 		const id: string = `task-${index}`;
 		const labelElement: HTMLLabelElement = document.createElement("label");
 		labelElement.innerText = task.title;
