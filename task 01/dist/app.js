@@ -14,6 +14,9 @@ const tasks = [
 const addTask = (task) => {
     tasks.push(task);
 };
+const updateSelectedCategory = (newCategory) => {
+    selectedCategory = newCategory;
+};
 addButtonElement.addEventListener("click", (event) => {
     event.preventDefault();
     addTask({
@@ -23,5 +26,14 @@ addButtonElement.addEventListener("click", (event) => {
     });
     render(tasks, tasksContainerElement);
 });
-renderCategories(categories, categoriesContainerElement, selectedCategory);
+renderCategories(categories, categoriesContainerElement, updateSelectedCategory);
 render(tasks, tasksContainerElement);
+let get = (response) => response;
+const logFixed = (v) => {
+    console.log(v.toFixed());
+};
+logFixed(2.1);
+let value = get(2.3);
+if (typeof value === "number") {
+    logFixed(value);
+}
