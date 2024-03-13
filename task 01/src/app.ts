@@ -9,7 +9,7 @@ const categoriesContainerElement: HTMLElement =
 	document.querySelector(".categories");
 let selectedCategory: Category;
 
-const categories: Category[] = ["general", "work", "gym", "hobby"];
+const categories: Category[] = ["general", "work", "gym", "hobby", "social"];
 
 const tasks: Task[] = [
 	{ title: "Wyrzucić śmieci", done: false },
@@ -42,14 +42,15 @@ renderCategories(
 );
 render(tasks, tasksContainerElement);
 
-let get = (response: unknown) => response;
+// let get = (response: unknown) => response;
 
-const logFixed = (v: number) => {
-	console.log(v.toFixed());
-};
+// const logFixed = (v: number) => {
+// 	console.log(v.toFixed());
+// };
 
-logFixed(2.1);
-let value = get(2.3);
-if (typeof value === "number") {
-	logFixed(value);
-}
+// logFixed(2.1);
+// let value = get(2.3);
+// // type narrowing
+// if (typeof value === "number") {
+// 	logFixed(value);
+// }

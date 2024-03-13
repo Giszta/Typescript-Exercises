@@ -1,29 +1,56 @@
-import { Category } from "../types/types";
+import { renderCategories } from "./helpers/render-categories.js";
+import { render } from "./helpers/render-task.js";
+import { Category, Task } from "./types/types";
 
-export const renderCategories = (
-	categories: Category[],
-	categoriesContainerElement: HTMLElement,
-	inputChangeCallback: (category: Category) => void
-) => {
-	categories.forEach((category) => {
-		const categoryElement: HTMLElement = document.createElement("li");
+const taskNameInputElement: HTMLInputElement = document.querySelector("#name");
+const addButtonElement: HTMLElement = document.querySelector("button");
+const tasksContainerElement: HTMLElement = document.querySelector(".tasks");
+const categoriesContainerElement: HTMLElement =
+	document.querySelector(".categories");
+let selectedCategory: Category;
 
-		const radioInputElement: HTMLInputElement = document.createElement("input");
-		radioInputElement.type = "radio";
-		radioInputElement.name = "category";
-		radioInputElement.value = category;
-		radioInputElement.id = `category-${category}`;
-		radioInputElement.addEventListener("change", () => {
-			inputChangeCallback(category);
-		});
+const categories: Category[] = ["general", "work", "gym", "hobby", "social"];
 
-		const labelElement: HTMLLabelElement = document.createElement("label");
-		labelElement.setAttribute("for", `category-${category}`);
-		labelElement.innerText = category;
+const tasks: Task[] = [
+	{ title: "Wyrzucić śmieci", done: false },
+	{ title: "Pójść na siłkę", done: true, category: "gym" },
+	{ title: "nakarmić koty", done: false },
+];
 
-		categoryElement.appendChild(radioInputElement);
-		categoryElement.appendChild(labelElement);
-
-		categoriesContainerElement.appendChild(categoryElement);
-	});
+const addTask = (task: Task) => {
+	tasks.push(task);
 };
+
+const updateSelectedCategory = (newCategory: Category) => {
+	selectedCategory = newCategory;
+};
+
+addButtonElement.addEventListener("click", (event: Event) => {
+	event.preventDefault();
+	addTask({
+		title: taskNameInputElement.value,
+		done: false,
+		category: selectedCategory,
+	});
+	render(tasks, tasksContainerElement);
+});
+
+renderCategories(
+	categories,
+	categoriesContainerElement,
+	updateSelectedCategory
+);
+render(tasks, tasksContainerElement);
+
+// let get = (response: unknown) => response;
+
+// const logFixed = (v: number) => {
+// 	console.log(v.toFixed());
+// };
+
+// logFixed(2.1);
+// let value = get(2.3);
+// // type narrowing
+// if (typeof value === "number") {
+// 	logFixed(value);
+// }
