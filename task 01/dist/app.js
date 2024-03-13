@@ -28,13 +28,13 @@ addButtonElement.addEventListener("click", (event) => {
 });
 renderCategories(categories, categoriesContainerElement, updateSelectedCategory);
 render(tasks, tasksContainerElement);
-let get = (response) => response;
-const logFixed = (v) => {
-    console.log(v.toFixed());
-};
-logFixed(2.1);
-let value = get(2.3);
-// type narrowing
-if (typeof value === "number") {
-    logFixed(value);
-}
+// let get = (response: unknown) => response;
+// const logFixed = (v: number) => {
+// 	console.log(v.toFixed());
+// };
+// logFixed(2.1);
+// let value = get(2.3);
+// // type narrowing
+// if (typeof value === "number") {
+// 	logFixed(value);
+// }
