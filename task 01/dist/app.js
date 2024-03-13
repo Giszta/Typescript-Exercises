@@ -35,6 +35,7 @@ addButtonElement.addEventListener("click", (event) => {
 });
 renderCategories(categories, categoriesContainerElement, updateSelectedCategory);
 render(tasks, tasksContainerElement);
+
 // let get = (response: unknown) => response;
 // const logFixed = (v: number) => {
 // 	console.log(v.toFixed());
@@ -45,3 +46,4 @@ render(tasks, tasksContainerElement);
 // if (typeof value === "number") {
 // 	logFixed(value);
 // }
+
