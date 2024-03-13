@@ -5,7 +5,7 @@ const addButtonElement = document.querySelector("button");
 const tasksContainerElement = document.querySelector(".tasks");
 const categoriesContainerElement = document.querySelector(".categories");
 let selectedCategory;
-const categories = ["general", "work", "gym", "hobby"];
+const categories = ["general", "work", "gym", "hobby", "social"];
 const tasks = [
     { title: "Wyrzucić śmieci", done: false },
     { title: "Pójść na siłkę", done: true, category: "gym" },
@@ -13,6 +13,9 @@ const tasks = [
 ];
 const addTask = (task) => {
     tasks.push(task);
+};
+const updateSelectedCategory = (newCategory) => {
+    selectedCategory = newCategory;
 };
 addButtonElement.addEventListener("click", (event) => {
     event.preventDefault();
@@ -23,5 +26,15 @@ addButtonElement.addEventListener("click", (event) => {
     });
     render(tasks, tasksContainerElement);
 });
-renderCategories(categories, categoriesContainerElement, selectedCategory);
+renderCategories(categories, categoriesContainerElement, updateSelectedCategory);
 render(tasks, tasksContainerElement);
+let get = (response) => response;
+const logFixed = (v) => {
+    console.log(v.toFixed());
+};
+logFixed(2.1);
+let value = get(2.3);
+// type narrowing
+if (typeof value === "number") {
+    logFixed(value);
+}
