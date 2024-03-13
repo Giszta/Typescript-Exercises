@@ -9,11 +9,11 @@ export const render = (tasks: Task[], tasksContainerElement: HTMLElement) => {
 		}
 		const id: string = `task-${index}`;
 		const labelElement: HTMLLabelElement = document.createElement("label");
-		labelElement.innerText = task.title;
+		labelElement.innerText = task.name;
 		labelElement.setAttribute("for", id);
 		const checkboxElement: HTMLInputElement = document.createElement("input");
 		checkboxElement.type = "checkbox";
-		checkboxElement.name = task.title;
+		checkboxElement.name = task.name;
 		checkboxElement.id = id;
 		checkboxElement.checked = task.done;
 		checkboxElement.addEventListener("change", () => {
